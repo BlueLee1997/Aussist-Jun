@@ -304,7 +304,7 @@ export default function Home() {
           {[
             { icon: 'home-outline', label: 'Home', route: '/screens/home' },
             { icon: 'heart-outline', label: 'Favourites', route: '/screens/favourite' },
-            { icon: 'chatbubble-outline', label: 'Chatbot', route: '/screens/chatbot' },
+            { icon: 'call-outline', label: 'TIS', route: '/screens/tis' },
             { icon: 'alert-circle-outline', label: 'Emergency', route: '/screens/emergency' },
             { icon: 'person-outline', label: 'Profile', route: '/screens/profile' },
           ].map((item, index) => (
@@ -314,7 +314,11 @@ export default function Home() {
               onPress={() => router.push(item.route as any)}
             >
               <Ionicons name={item.icon as any} size={24} color={theme.colors.primary} />
-              <TText style={{ fontSize: 12, marginTop: 4, color: theme.colors.primary }}>{item.label}</TText>
+              {item.label === 'TIS' ? (
+                <Text style={{ fontSize: 12, marginTop: 4, color: theme.colors.primary }}>TIS</Text>
+              ) : (
+                <TText style={{ fontSize: 12, marginTop: 4, color: theme.colors.primary }}>{item.label}</TText>
+              )}
             </TouchableOpacity>
           ))}
         </View>

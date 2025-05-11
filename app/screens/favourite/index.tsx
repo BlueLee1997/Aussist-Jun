@@ -46,16 +46,16 @@ export default function FavouritePage() {
             <Text style={styles.headerSubtitle}>
               {translatedTexts["Your saved services and information"] || "Your saved services and information"}
             </Text>
-          </View>
+      </View>
 
           <View style={styles.favouritesContainer}>
-            {favourites.length > 0 ? (
+        {favourites.length > 0 ? (
               favourites.map((item, index) => (
-                <TouchableOpacity
+            <TouchableOpacity
                   key={index}
                   style={styles.favouriteCard}
                   onPress={() => handleFavouritePress(item)}
-                >
+            >
                   <View style={styles.favouriteContent}>
                     {item.image && (
                       <Image source={item.image} style={styles.favouriteImage} />
@@ -64,11 +64,11 @@ export default function FavouritePage() {
                       <Text style={styles.favouriteTitle}>{item.title}</Text>
                       <Text style={styles.favouriteDescription}>{item.description}</Text>
                     </View>
-                  </View>
-                  <TouchableOpacity
-                    style={styles.removeButton}
+                </View>
+                <TouchableOpacity
+                  style={styles.removeButton}
                     onPress={() => removeFavourite(item.id)}
-                  >
+                >
                     <MaterialIcons name="favorite" size={24} color={theme.colors.primary} />
                   </TouchableOpacity>
                 </TouchableOpacity>
@@ -85,7 +85,7 @@ export default function FavouritePage() {
               </View>
             )}
           </View>
-        </ScrollView>
+      </ScrollView>
       </View>
     </>
   );
