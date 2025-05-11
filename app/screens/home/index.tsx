@@ -30,28 +30,28 @@ const languages = [
 ];
 
 const serviceCategories = [
-  { id: 'transport', title: 'Transport', description: 'Public transport information and services in NSW', icon: 'train-outline', route: '/screens/transport/index' },
-  { id: 'banking', title: 'Banking', description: 'Australian banking systems and financial assistance', icon: 'card-outline', route: '/screens/banking/index' },
-  { id: 'housing', title: 'Housing', description: 'Find accommodation and rental assistance', icon: 'home-outline', route: '/screens/housing/index' },
-  { id: 'legal', title: 'Legal', description: 'Legal support and advice for migrants', icon: 'book-outline', route: '/screens/legal/index' },
-  { id: 'english', title: 'Learn English', description: 'English language courses and learning resources', icon: 'school-outline', route: '/screens/english/index' },
-  { id: 'jobs', title: 'Jobs', description: 'Find jobs and understand Australian workplace', icon: 'briefcase-outline', route: '/screens/jobs/index' },
+  { id: 'transport', title: 'Transport', description: 'Public transport information and services in NSW', icon: 'train-outline', route: '/screens/transport' },
+  { id: 'banking', title: 'Banking', description: 'Australian banking systems and financial assistance', icon: 'card-outline', route: '/screens/banking' },
+  { id: 'housing', title: 'Housing', description: 'Find accommodation and rental assistance', icon: 'home-outline', route: '/screens/housing' },
+  { id: 'legal', title: 'Legal', description: 'Legal support and advice for migrants', icon: 'book-outline', route: '/screens/legal' },
+  { id: 'english', title: 'Learn English', description: 'English language courses and learning resources', icon: 'school-outline', route: '/screens/english' },
+  { id: 'jobs', title: 'Jobs', description: 'Find jobs and understand Australian workplace', icon: 'briefcase-outline', route: '/screens/jobs' },
 ];
 
 const serviceImgs = [
-  require('../assets/images/Symptom.jpg'),
-  require('../assets/images/Hospital.jpg'),
-  require('../assets/images/Disease.jpg'),
-  require('../assets/images/Healthcare.jpg'),
+  require('../../assets/images/Symptom.jpg'),
+  require('../../assets/images/Hospital.jpg'),
+  require('../../assets/images/Disease.jpg'),
+  require('../../assets/images/Healthcare.jpg'),
 ];
 
 const categoryImgs: { [key: string]: any } = {
-  transport: require('../assets/images/home-transport.jpg'),
-  banking: require('../assets/images/home-banking.jpg'),
-  housing: require('../assets/images/home-housing.jpg'),
-  legal: require('../assets/images/home-legal.jpg'),
-  english: require('../assets/images/home-learn.jpg'),
-  jobs: require('../assets/images/home-jobs.jpg'),
+  transport: require('../../assets/images/home-transport.jpg'),
+  banking: require('../../assets/images/home-banking.jpg'),
+  housing: require('../../assets/images/home-housing.jpg'),
+  legal: require('../../assets/images/home-legal.jpg'),
+  english: require('../../assets/images/home-learn.jpg'),
+  jobs: require('../../assets/images/home-jobs.jpg'),
 };
 
 export default function Home() {
@@ -187,7 +187,7 @@ export default function Home() {
                   onPress={() => {
                     if (searchText.trim()) {
                       router.push({
-                        pathname: '/chatbot/chatbot' as any,
+                        pathname: '/screens/chatbot' as any,
                         params: { initialMessage: searchText.trim() }
                       });
                     }
@@ -214,11 +214,11 @@ export default function Home() {
                   if (service.label === 'Find Hospital') {
                     router.push('/screens/location/enable-location' as any);
                   } else if (service.label === 'Healthcare Support') {
-                    router.push('/screens/healthcare/index' as any);
+                    router.push('/screens/healthcare' as any);
                   } else if (service.label === 'Symptom Checker') {
-                    router.push('/screens/symptoms/index' as any);
+                    router.push('/screens/symptoms' as any);
                   } else {
-                    router.push('/screens/home/index' as any);
+                    router.push('/screens/home' as any);
                   }
                 }}>
                   <View style={{ position: 'relative' }}>
@@ -238,8 +238,8 @@ export default function Home() {
                         description: service.desc,
                         icon: 'medical-services',
                         route: service.label === 'Find Hospital' ? '/screens/location/enable-location' :
-                               service.label === 'Healthcare Support' ? '/screens/healthcare/index' :
-                               service.label === 'Symptom Checker' ? '/screens/symptoms/index' : '/screens/home/index'
+                               service.label === 'Healthcare Support' ? '/screens/healthcare' :
+                               service.label === 'Symptom Checker' ? '/screens/symptoms' : '/screens/home'
                       })}
                     >
                       <MaterialIcons 
@@ -302,11 +302,11 @@ export default function Home() {
       }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
           {[
-            { icon: 'home-outline', label: 'Home', route: '/screens/home/index' },
-            { icon: 'heart-outline', label: 'Favourites', route: '/favourite/favourite' },
-            { icon: 'chatbubble-outline', label: 'Chatbot', route: '/chatbot/chatbot' },
-            { icon: 'alert-circle-outline', label: 'Emergency', route: '/emergency/emergency' },
-            { icon: 'person-outline', label: 'Profile', route: '/profile/profile' },
+            { icon: 'home-outline', label: 'Home', route: '/screens/home' },
+            { icon: 'heart-outline', label: 'Favourites', route: '/screens/favourite' },
+            { icon: 'chatbubble-outline', label: 'Chatbot', route: '/screens/chatbot' },
+            { icon: 'alert-circle-outline', label: 'Emergency', route: '/screens/emergency' },
+            { icon: 'person-outline', label: 'Profile', route: '/screens/profile' },
           ].map((item, index) => (
             <TouchableOpacity
               key={index}

@@ -4,7 +4,7 @@ import { MaterialIcons, Ionicons } from '@expo/vector-icons';
 import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { WebView } from 'react-native-webview';
 import Svg, { Path } from 'react-native-svg';
-import { useTranslation } from '../../_context/TranslationContext';
+import { useTranslation } from '../../../_context/TranslationContext';
 
 const supportOptions = [
   {
@@ -47,28 +47,28 @@ const SocialMediaIcon = ({ name, onPress }: { name: string; onPress: () => void 
       case 'youtube':
         return (
           <Image
-            source={require('../../assets/images/youtube.jpg')}
+            source={require('../../../assets/images/youtube.jpg')}
             style={[styles.socialMediaImage, { borderRadius: 8 }]}
           />
         );
       case 'instagram':
         return (
           <Image
-            source={require('../../assets/images/insta.jpg')}
+            source={require('../../../assets/images/insta.jpg')}
             style={[styles.socialMediaImage, { borderRadius: 8 }]}
           />
         );
       case 'facebook':
         return (
           <Image
-            source={require('../../assets/images/face.jpg')}
+            source={require('../../../assets/images/face.jpg')}
             style={[styles.socialMediaImage, { borderRadius: 8 }]}
           />
         );
       case 'twitter':
         return (
           <Image
-            source={require('../../assets/images/x.jpg')}
+            source={require('../../../assets/images/x.jpg')}
             style={[styles.socialMediaImage, { borderRadius: 8 }]}
           />
         );

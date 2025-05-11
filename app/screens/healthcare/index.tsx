@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { View, ScrollView, TouchableOpacity, Image, StatusBar, Text } from 'react-native';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
-import { theme } from '../_lib/theme';
+import { theme } from '../../_lib/theme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import TText from '../_components/TText';
+import TText from '../../_components/TText';
 import { Linking } from 'react-native';
 import { Stack, router } from 'expo-router';
-import { useTranslation } from '../_context/TranslationContext';
+import { useTranslation } from '../../_context/TranslationContext';
 
 type HealthOption = {
   id: string;

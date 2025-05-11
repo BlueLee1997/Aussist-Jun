@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, SafeAreaView, Alert, Linking } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { theme } from '../_lib/theme';
-import TText from '../_components/TText';
+import { theme } from '../../_lib/theme';
+import TText from '../../_components/TText';
 import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import * as Location from 'expo-location';
-import { useTranslation } from '../_context/TranslationContext';
+import { useTranslation } from '../../_context/TranslationContext';
 import { MaterialIcons } from '@expo/vector-icons';
 
 export default function EnableLocationScreen() {
@@ -34,13 +34,13 @@ export default function EnableLocationScreen() {
   const handleEnableLocation = async () => {
     const { status } = await Location.requestForegroundPermissionsAsync();
     if (status === 'granted') {
-      router.replace('/hospital/hospital');
+      router.replace('/screens/hospital');
     } else {
       Alert.alert(
         translatedTexts['We need the location authority'] || 'We need the location authority',
         translatedTexts['In order to use the service, we need the location authority'] || 'In order to use the service, we need the location authority',
         [
-          { text: translatedTexts['got it'] || 'got it', onPress: () => router.replace('/home/home') },
+          { text: translatedTexts['got it'] || 'got it', onPress: () => router.replace('/screens/home') },
         ]
       );
     }
@@ -57,14 +57,14 @@ export default function EnableLocationScreen() {
         <View style={styles.content}>
           <TText style={styles.title}>{translatedTexts['Enable Location Services'] || 'Enable Location Services'}</TText>
           <Image
-            source={require('../assets/images/Hospital.jpg')}
+            source={require('../../assets/images/Hospital.jpg')}
             style={styles.image}
           />
           <TText style={styles.description}>
             {translatedTexts['Your location services are switched off. Please enable location to use the Find Hospital service.'] || 'Your location services are switched off. Please enable location to use the Find Hospital service.'}
           </TText>
       <View style={styles.buttonRow}>
-        <TouchableOpacity style={styles.denyButton} onPress={() => router.replace('/home/home')}>
+        <TouchableOpacity style={styles.denyButton} onPress={() => router.replace('/screens/home')}>
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
             <Ionicons name="close" size={25} color="#EF4444" style={{ marginRight: 4 }} />
                 <Text style={styles.denyButtonText}>{translatedTexts['Deny'] || 'Deny'}</Text>

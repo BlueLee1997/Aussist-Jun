@@ -77,7 +77,7 @@ export default function TransportPage() {
 
           <View style={styles.imageContainer}>
             <Image 
-              source={require('../assets/images/sydney-train.jpg')}
+              source={require('../../assets/images/sydney-train.jpg')}
               style={styles.headerImage}
               resizeMode="cover"
             />
@@ -88,7 +88,7 @@ export default function TransportPage() {
               <TouchableOpacity
                 key={category.id}
                 style={styles.categoryCard}
-                onPress={() => router.push(`/screens/transport/${category.id}/index`)}
+                onPress={() => router.push(`/screens/transport/${category.id}`)}
               >
                 <View style={[styles.iconContainer, { backgroundColor: category.color }]}>
                   <MaterialIcons name={category.icon as any} size={31} color="#fff" />

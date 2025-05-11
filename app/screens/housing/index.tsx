@@ -124,28 +124,28 @@ const propertySites = [
     name: 'Domain',
     desc: 'Australia\'s leading property website',
     url: 'https://www.domain.com.au',
-    image: require('../../app/assets/images/domain.jpg'),
+    image: require('../../assets/images/domain.jpg'),
   },
   {
     id: '2',
     name: 'RealEstate.com.au',
     desc: 'Find properties for sale and rent',
     url: 'https://www.realestate.com.au/',
-    image: require('../../app/assets/images/real.jpg'),
+    image: require('../../assets/images/real.jpg'),
   },
   {
     id: '3',
     name: 'Flatmates',
     desc: 'Find share accommodation',
     url: 'https://www.flatmates.com.au',
-    image: require('../../app/assets/images/flat.jpg'),
+    image: require('../../assets/images/flat.jpg'),
   },
   {
     id: '4',
     name: 'Gumtree',
     desc: 'Private rental listings and share houses',
     url: 'https://www.gumtree.com.au/s-property-for-rent',
-    image: require('../../app/assets/images/gum.jpg'),
+    image: require('../../assets/images/gum.jpg'),
   },
 ];
 

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image, Linking, Platform } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { router, Stack } from 'expo-router';
-import { useTranslation } from '../../_context/TranslationContext';
+import { useTranslation } from '../../../_context/TranslationContext';
 
 const appStores = {
   android: {
@@ -40,19 +40,24 @@ export default function RoutesAndTimetables() {
     translateAll(selectedLanguage);
   }, [selectedLanguage]);
 
+  const handleLearnMore = (url: string) => {
+    Linking.openURL(url);
+  };
+
   return (
     <>
       <Stack.Screen 
         options={{
           title: translatedTexts["Routes and Timetables"] || "Routes and Timetables",
-          headerBackTitle: 'Back'
+          headerBackTitle: 'Back',
+          headerShown: false
         }} 
       />
       <View style={styles.container}>
         <ScrollView style={styles.scrollView}>
           <View style={styles.header}>
             <Text style={styles.headerTitle}>
-              {translatedTexts["Plan Your Journey"] || "Plan Your Journey"}
+              {translatedTexts["Routes and Timetables"] || "Routes and Timetables"}
             </Text>
             <Text style={styles.headerSubtitle}>
               {translatedTexts["Find routes and check timetables"] || "Find routes and check timetables"}
@@ -62,7 +67,7 @@ export default function RoutesAndTimetables() {
           <View style={styles.appSection}>
             <View style={styles.appHeader}>
               <Image 
-                source={require('../../assets/images/tripview.png')} 
+                source={require('../../../assets/images/tripview.png')} 
                 style={styles.appIcon}
               />
               <View style={styles.appHeaderText}>
@@ -99,7 +104,7 @@ export default function RoutesAndTimetables() {
                     style={styles.textStoreButton}
                   >
                     <Image
-                      source={require('../../assets/images/appstore.jpg')}
+                      source={require('../../../assets/images/appstore.jpg')}
                       style={styles.fullImage}
                       resizeMode="contain"
                     />
@@ -109,7 +114,7 @@ export default function RoutesAndTimetables() {
                     style={styles.textStoreButton}
                   >
                     <Image
-                      source={require('../../assets/images/googleplay.jpg')}
+                      source={require('../../../assets/images/googleplay.jpg')}
                       style={styles.fullImage}
                       resizeMode="contain"
                     />
@@ -130,7 +135,7 @@ export default function RoutesAndTimetables() {
                     style={styles.textStoreButton}
                   >
                     <Image
-                      source={require('../../assets/images/appstore.jpg')}
+                      source={require('../../../assets/images/appstore.jpg')}
                       style={styles.fullImage}
                       resizeMode="contain"
                     />
@@ -140,7 +145,7 @@ export default function RoutesAndTimetables() {
                     style={styles.textStoreButton}
                   >
                     <Image
-                      source={require('../../assets/images/googleplay.jpg')}
+                      source={require('../../../assets/images/googleplay.jpg')}
                       style={styles.fullImage}
                       resizeMode="contain"
                     />

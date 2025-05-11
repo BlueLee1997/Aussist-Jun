@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { MaterialIcons, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import { Stack } from 'expo-router';
-import { useTranslation } from '../../../_context/TranslationContext';
+import { useTranslation } from '../../../../_context/TranslationContext';
 
 type TransportType = 'metroTrain' | 'bus' | 'ferry' | 'lightRail';
 type CapsTabType = 'adults' | 'children' | 'seniors';
@@ -335,7 +335,8 @@ export default function Fares() {
       <Stack.Screen 
         options={{
           title: translatedTexts["Fares"] || "Fares",
-          headerBackTitle: 'Back'
+          headerBackTitle: 'Back',
+          headerShown: true
         }} 
       />
       <View style={styles.container}>
@@ -355,19 +356,19 @@ export default function Fares() {
                   <View style={styles.cardIcon}>
                     {fareType.id === '1' && (
                       <Image 
-                        source={require('../../../assets/images/AdultOpalCard.jpg')}
+                        source={require('../../../../assets/images/AdultOpalCard.jpg')}
                         style={styles.cardImage}
                       />
                     )}
                     {fareType.id === '2' && (
                       <Image 
-                        source={require('../../../assets/images/ChildConcession.jpg')}
+                        source={require('../../../../assets/images/ChildConcession.jpg')}
                         style={styles.cardImage}
                       />
                     )}
                     {fareType.id === '3' && (
                       <Image 
-                        source={require('../../../assets/images/GoldenOpalCard.jpg')}
+                        source={require('../../../../assets/images/GoldenOpalCard.jpg')}
                         style={styles.cardImage}
                       />
                     )}

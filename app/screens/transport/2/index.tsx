@@ -94,11 +94,20 @@ export default function TicketsAndFares() {
       <Stack.Screen 
         options={{
           title: translatedTexts["Tickets and Fares"] || "Tickets and Fares",
-          headerBackTitle: 'Back'
+          headerBackTitle: 'Back',
+          headerShown: false
         }} 
       />
       <View style={styles.container}>
         <ScrollView style={styles.scrollView}>
+          <View style={styles.header}>
+            <Text style={styles.headerTitle}>
+              {translatedTexts["Tickets and Fares"] || "Tickets and Fares"}
+            </Text>
+            <Text style={styles.headerSubtitle}>
+              {translatedTexts["How to pay for your travel"] || "How to pay for your travel"}
+            </Text>
+          </View>
           <View style={styles.servicesContainer}>
             {/* Ways to Pay 카드 */}
             <View style={styles.cardContainer}>
@@ -174,9 +183,9 @@ export default function TicketsAndFares() {
                 style={styles.cardContainer}
                 onPress={() => {
                   if (option.id === '2') {
-                    router.push('/screens/transport/2/fares/index');
+                    router.push('/screens/transport/2/fares' as any);
                   } else if (option.id === '3') {
-                    router.push('/screens/transport/2/manage/index');
+                    router.push('/screens/transport/2/manage' as any);
                   }
                 }}
               >
@@ -210,6 +219,19 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     flex: 1,
+  },
+  header: {
+    padding: 15,
+  },
+  headerTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#000',
+    marginBottom: 5,
+  },
+  headerSubtitle: {
+    fontSize: 14,
+    color: '#666',
   },
   servicesContainer: {
     padding: 15,

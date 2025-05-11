@@ -19,7 +19,7 @@ const bankOptions: BankOption[] = [
   {
     id: '1',
     name: 'Commonwealth',
-    image: require('../assets/images/comm.jpg'),
+    image: require('../../assets/images/comm.jpg'),
     features: [
       'No monthly account fees for the first 12 months',
       'Free international money transfers',
@@ -31,7 +31,7 @@ const bankOptions: BankOption[] = [
   {
     id: '2',
     name: 'Westpac',
-    image: require('../assets/images/west.jpg'),
+    image: require('../../assets/images/west.jpg'),
     features: [
       'No monthly account fees for the first year',
       'Free ATM withdrawals',
@@ -43,7 +43,7 @@ const bankOptions: BankOption[] = [
   {
     id: '3',
     name: 'NAB',
-    image: require('../assets/images/nab.jpg'),
+    image: require('../../assets/images/nab.jpg'),
     features: [
       'No monthly account fees',
       'Free ATM withdrawals',
@@ -55,7 +55,7 @@ const bankOptions: BankOption[] = [
   {
     id: '4',
     name: 'ANZ',
-    image: require('../assets/images/anz.jpg'),
+    image: require('../../assets/images/anz.jpg'),
     features: [
       'No monthly account fees for migrants',
       'Free international money transfers',
@@ -213,7 +213,7 @@ export default function BankingScreen() {
                           style={styles.storeButton}
                         >
                           <Image
-                            source={require('../assets/images/appstore.jpg')}
+                            source={require('../../assets/images/appstore.jpg')}
                             style={styles.storeImage}
                             resizeMode="contain"
                           />
@@ -223,7 +223,7 @@ export default function BankingScreen() {
                           style={styles.storeButton}
                         >
                           <Image
-                            source={require('../assets/images/googleplay.jpg')}
+                            source={require('../../assets/images/googleplay.jpg')}
                             style={styles.storeImage}
                             resizeMode="contain"
                           />

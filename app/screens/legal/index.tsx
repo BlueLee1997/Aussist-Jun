@@ -3,9 +3,9 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, Linking } 
 import { MaterialIcons } from '@expo/vector-icons';
 import { Stack, router } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { theme } from '../_lib/theme';
-import TText from '../_components/TText';
-import { useTranslation } from '../_context/TranslationContext';
+import { theme } from '../../_lib/theme';
+import TText from '../../_components/TText';
+import { useTranslation } from '../../_context/TranslationContext';
 
 const legalServices = [
   {

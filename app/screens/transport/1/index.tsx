@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { MaterialIcons, FontAwesome, Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import { router, Stack } from 'expo-router';
-import { useTranslation } from '../../_context/TranslationContext';
+import { useTranslation } from '../../../_context/TranslationContext';
 
 const transportTypes = [
   {

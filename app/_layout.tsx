@@ -22,7 +22,7 @@ if (typeof global.crypto.getRandomValues === 'undefined') {
 export { ErrorBoundary } from 'expo-router';
 
 export const unstable_settings = {
-  initialRouteName: 'screens/home/index',
+  initialRouteName: 'index',
 };
 
 // 라우팅 타입 정의

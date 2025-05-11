@@ -3,9 +3,9 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking, Image } 
 import { MaterialIcons } from '@expo/vector-icons';
 import { Stack, router, useSearchParams } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { theme } from '../_lib/theme';
-import TText from '../_components/TText';
-import { useTranslation } from '../_context/TranslationContext';
+import { theme } from '../../_lib/theme';
+import TText from '../../_components/TText';
+import { useTranslation } from '../../_context/TranslationContext';
 
 const jobSites = [
   {
@@ -13,28 +13,28 @@ const jobSites = [
     name: 'Seek',
     desc: 'Australia\'s largest job site',
     url: 'https://www.seek.com.au',
-    image: require('../assets/images/seek.jpg'),
+    image: require('../../assets/images/seek.jpg'),
   },
   {
     id: '2',
     name: 'Indeed',
     desc: 'Search millions of jobs',
     url: 'https://au.indeed.com',
-    image: require('../assets/images/indeed.jpg'),
+    image: require('../../assets/images/indeed.jpg'),
   },
   {
     id: '3',
     name: 'LinkedIn',
     desc: 'Professional networking and job search',
     url: 'https://www.linkedin.com',
-    image: require('../assets/images/link.jpg'),
+    image: require('../../assets/images/link.jpg'),
   },
   {
     id: '4',
     name: 'JobActive',
     desc: 'Australian Government job search website',
     url: 'https://jobsearch.gov.au',
-    image: require('../assets/images/jobact.jpg'),
+    image: require('../../assets/images/jobact.jpg'),
   },
 ];
 

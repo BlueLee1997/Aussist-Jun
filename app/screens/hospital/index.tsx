@@ -15,11 +15,11 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useTranslation } from '../_context/TranslationContext';
+import { useTranslation } from '../../_context/TranslationContext';
 import MapView, { Marker, PROVIDER_GOOGLE, Region } from 'react-native-maps';
 import * as Location from 'expo-location';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { searchNearbyHospitals, searchPlaces } from '../_maps/maps';
+import { searchNearbyHospitals, searchPlaces } from '../../_maps/maps';
 
 // --------------------------------------------------
 // opening_hours.periods 배열을 받아, 다음 오픈 시간(HHMM 문자열) 반환

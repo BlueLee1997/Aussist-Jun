@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image, Linking } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Stack } from 'expo-router';
-import { useTranslation } from '../../../_context/TranslationContext';
+import { useTranslation } from '../../../../_context/TranslationContext';
 import { useRouter } from 'expo-router';
 
 type PaymentOption = {
@@ -96,20 +96,12 @@ export default function ManagePayments() {
       <Stack.Screen 
         options={{
           title: translatedTexts["Manage your payments"] || "Manage your payments",
-          headerBackTitle: 'Back'
+          headerBackTitle: 'Back',
+          headerShown: true
         }} 
       />
       <View style={styles.container}>
         <ScrollView style={styles.scrollView}>
-          <View style={styles.header}>
-            <Text style={styles.headerTitle}>
-              {translatedTexts["Manage your payments"] || "Manage your payments"}
-            </Text>
-            <Text style={styles.headerSubtitle}>
-              {translatedTexts["Top up, view history, and manage your account"] || "Top up, view history, and manage your account"}
-            </Text>
-          </View>
-
           <View style={styles.contentContainer}>
             {/* Download App Buttons */}
             <View style={styles.downloadSection}>
@@ -122,7 +114,7 @@ export default function ManagePayments() {
                   style={styles.textStoreButton}
                 >
                   <Image
-                    source={require('../../../assets/images/appstore.jpg')}
+                    source={require('../../../../assets/images/appstore.jpg')}
                     style={styles.fullImage}
                     resizeMode="contain"
                   />
@@ -132,7 +124,7 @@ export default function ManagePayments() {
                   style={styles.textStoreButton}
                 >
                   <Image
-                    source={require('../../../assets/images/googleplay.jpg')}
+                    source={require('../../../../assets/images/googleplay.jpg')}
                     style={styles.fullImage}
                     resizeMode="contain"
                   />

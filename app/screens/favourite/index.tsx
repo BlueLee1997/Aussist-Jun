@@ -1,146 +1,177 @@
 import React from 'react';
-import { View, Text, ScrollView, SafeAreaView, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { router } from 'expo-router';
-import { theme } from '../../_lib/theme';
-import TText from '../../_components/TText';
-import { useFavourites, FavouriteItem } from '../../_context/FavouriteContext';
-import { Linking } from 'react-native';
+import { router, Stack } from 'expo-router';
 import { useTranslation } from '../../_context/TranslationContext';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { theme } from '../../_lib/theme';
+import { useFavourites } from '../../_context/FavouriteContext';
 
-const categoryImgs: { [key: string]: any } = {
-  transport: require('../assets/images/home-transport.jpg'),
-  banking: require('../assets/images/home-banking.jpg'),
-  housing: require('../assets/images/home-housing.jpg'),
-  legal: require('../assets/images/home-legal.jpg'),
-  english: require('../assets/images/home-learn.jpg'),
-  jobs: require('../assets/images/home-jobs.jpg'),
-};
-
-const serviceImgs = [
-  require('../assets/images/Symptom.jpg'),
-  require('../assets/images/Hospital.jpg'),
-  require('../assets/images/Disease.jpg'),
-  require('../assets/images/Healthcare.jpg'),
-];
-
-export default function FavouriteScreen() {
-  const insets = useSafeAreaInsets();
+export default function FavouritePage() {
+  const { selectedLanguage, translateAll, registerText, translatedTexts } = useTranslation();
   const { favourites, removeFavourite } = useFavourites();
+  const insets = useSafeAreaInsets();
 
-  const handleRemove = (id: string) => {
-    removeFavourite(id);
-  };
+  React.useEffect(() => {
+    registerText("Favourites");
+    registerText("Your saved services and information");
+    registerText("No favourites yet");
+    registerText("Add services to your favourites for quick access");
+  }, []);
 
-  const handlePress = (item: FavouriteItem) => {
-    if (item.url) {
-      Linking.openURL(item.url);
-    } else if (item.route) {
+  React.useEffect(() => {
+    translateAll(selectedLanguage);
+  }, [selectedLanguage]);
+
+  const handleFavouritePress = (item: any) => {
+    if (item.route) {
       router.push(item.route as any);
     }
   };
 
-  const getImageSource = (item: FavouriteItem) => {
-    if (item.id.startsWith('medical-')) {
-      const idx = parseInt(item.id.split('-')[1]);
-      return serviceImgs[idx];
-    }
-    return categoryImgs[item.id] || null;
-  };
-
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
-      <View style={{ paddingTop: insets.top + 10, paddingBottom: 16, paddingHorizontal: 16, backgroundColor: theme.colors.primary }}>
-        <Text style={{ fontSize: 24, fontWeight: 'bold', color: 'white' }}>Favourites</Text>
-        <TText style={{ fontSize: 16, color: 'white' }}>Your saved services</TText>
-      </View>
-
-      <ScrollView style={{ flex: 1, padding: 16 }}>
-        {favourites.length > 0 ? (
-          favourites.map((item) => (
-            <TouchableOpacity
-              key={item.id}
-              style={styles.card}
-              onPress={() => handlePress(item)}
-            >
-              <View style={styles.cardContent}>
-                <Image 
-                  source={getImageSource(item)} 
-                  style={styles.image}
-                />
-                <View style={styles.textContainer}>
-                  <Text style={styles.title}>{item.title}</Text>
-                  <Text style={styles.description}>{item.description}</Text>
-                </View>
-                <TouchableOpacity
-                  style={styles.removeButton}
-                  onPress={() => handleRemove(item.id)}
-                >
-                  <MaterialIcons name="favorite" size={24} color="#0284C7" />
-                </TouchableOpacity>
-              </View>
-            </TouchableOpacity>
-          ))
-        ) : (
-          <View style={styles.emptyContainer}>
-            <MaterialIcons name="favorite-border" size={48} color="#666" />
-            <TText style={styles.emptyText}>No saved services yet</TText>
+    <>
+      <Stack.Screen 
+        options={{
+          title: translatedTexts["Favourites"] || "Favourites",
+          headerBackTitle: 'Back'
+        }} 
+      />
+      <View style={styles.container}>
+        <ScrollView style={styles.scrollView}>
+          <View style={[styles.header, { paddingTop: insets.top + 10, backgroundColor: theme.colors.primary }]}>
+            <Text style={styles.headerTitle}>
+              {translatedTexts["Favourites"] || "Favourites"}
+            </Text>
+            <Text style={styles.headerSubtitle}>
+              {translatedTexts["Your saved services and information"] || "Your saved services and information"}
+            </Text>
           </View>
-        )}
-      </ScrollView>
-    </SafeAreaView>
+
+          <View style={styles.favouritesContainer}>
+            {favourites.length > 0 ? (
+              favourites.map((item, index) => (
+                <TouchableOpacity
+                  key={index}
+                  style={styles.favouriteCard}
+                  onPress={() => handleFavouritePress(item)}
+                >
+                  <View style={styles.favouriteContent}>
+                    {item.image && (
+                      <Image source={item.image} style={styles.favouriteImage} />
+                    )}
+                    <View style={styles.favouriteTextContainer}>
+                      <Text style={styles.favouriteTitle}>{item.title}</Text>
+                      <Text style={styles.favouriteDescription}>{item.description}</Text>
+                    </View>
+                  </View>
+                  <TouchableOpacity
+                    style={styles.removeButton}
+                    onPress={() => removeFavourite(item.id)}
+                  >
+                    <MaterialIcons name="favorite" size={24} color={theme.colors.primary} />
+                  </TouchableOpacity>
+                </TouchableOpacity>
+              ))
+            ) : (
+              <View style={styles.emptyState}>
+                <MaterialIcons name="favorite-border" size={48} color="#ccc" />
+                <Text style={styles.emptyStateTitle}>
+                  {translatedTexts["No favourites yet"] || "No favourites yet"}
+                </Text>
+                <Text style={styles.emptyStateDescription}>
+                  {translatedTexts["Add services to your favourites for quick access"] || "Add services to your favourites for quick access"}
+                </Text>
+              </View>
+            )}
+          </View>
+        </ScrollView>
+      </View>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  card: {
-    backgroundColor: 'white',
-    borderRadius: 12,
-    marginBottom: 12,
-    overflow: 'hidden',
+  container: {
+    flex: 1,
+    backgroundColor: '#f5f5f5',
+  },
+  scrollView: {
+    flex: 1,
+  },
+  header: {
+    paddingBottom: 16,
+    paddingHorizontal: 16,
+  },
+  headerTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'white',
+    marginBottom: 8,
+  },
+  headerSubtitle: {
+    fontSize: 16,
+    color: 'white',
+  },
+  favouritesContainer: {
+    padding: 15,
+  },
+  favouriteCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    marginBottom: 15,
+    padding: 15,
+    elevation: 2,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
-    elevation: 2,
   },
-  cardContent: {
+  favouriteContent: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 12,
   },
-  image: {
-    width: 80,
-    height: 80,
-    borderRadius: 8,
-    marginRight: 12,
+  favouriteImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    marginRight: 15,
   },
-  textContainer: {
+  favouriteTextContainer: {
     flex: 1,
   },
-  title: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#222',
-    marginBottom: 4,
+  favouriteTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#000',
+    marginBottom: 5,
   },
-  description: {
+  favouriteDescription: {
     fontSize: 14,
     color: '#666',
   },
   removeButton: {
     padding: 8,
   },
-  emptyContainer: {
+  emptyState: {
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 32,
+    padding: 30,
   },
-  emptyText: {
-    marginTop: 16,
-    fontSize: 16,
+  emptyStateTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
     color: '#666',
+    marginTop: 16,
+    marginBottom: 8,
+  },
+  emptyStateDescription: {
+    fontSize: 16,
+    color: '#999',
     textAlign: 'center',
   },
 }); 
